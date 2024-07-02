@@ -19,3 +19,25 @@ a single message can contains multiple \n
 when the server receive a message, it must resend it to all the other client with "client %d: " before every line!
 When a client disconnect from the server:
 a message is sent to all the client that was connected to the server: "server: client %d just left\n"
+
+---------
+
+İstemcilerin 127.0.0.1 üzerindeki belirli bir porta bağlanmasını dinleyecek ve istemcilerin birbirleriyle konuşmasına izin verecek bir program yazın. Bu program ilk argüman olarak bağlanılacak portu alacaktır.
+
+Eğer hiçbir argüman verilmezse, stderr'a "Wrong number of arguments" yazmalı ve ardından bir \n ve durum 1 ile çıkmalıdır
+Bir Sistem Çağrısı, program bağlantıyı kabul etmeye başlamadan önce bir hata döndürürse, stderr'a "Fatal error" yazmalı ve ardından bir \n ve durum 1 ile çıkmalıdır
+Bellek ayıramazsanız stderr'ye "Fatal error" yazmalı ve ardından bir \n ve durum 1 ile çıkmalıdır
+Sizin Programınız
+Programınız bloklama yapmamalı, ancak istemci tembel olabilir ve mesajınızı okumazlarsa bağlantılarını KESMEMELİSİNİZ...
+Programınız #define preproc içermemelidir
+Programınız sadece 127.0.0.1 adresini dinlemelidir
+Alacağınız fd, 'recv' veya 'send' komutlarını çağırmadan önce select komutu çağrılmamışsa bu komutları bloke edecek, aksi takdirde bloke etmeyecek şekilde ayarlanmış olacaktır.
+
+Bir istemci sunucuya bağlandığında:
+istemciye bir kimlik verilecektir. ilk istemci 0 kimliğini alacak ve her yeni istemci son istemci kimliğini + 1 alacaktır.
+d bu sayı ile değiştirilecektir
+sunucuya bağlanan tüm istemcilere bir mesaj gönderilir: "sunucu: istemci %d az önce geldi\n"
+İstemciler programınıza mesaj gönderebilmelidir.
+mesaj yalnızca yazdırılabilir karakterler olacaktır, kontrol etmeye gerek yoktur
+tek bir mesaj birden fazla \n içerebilir
+Sunucu bir mesaj aldığında, mesajı tüm sunuculara yeniden göndermelidir. 
