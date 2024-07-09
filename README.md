@@ -22,7 +22,7 @@ when the server receive a message, it must resend it to all the other client wit
 When a client disconnect from the server:
 a message is sent to all the client that was connected to the server: "server: client %d just left\n"
 
----------
+-------
 # Türkçe 
 
 İstemcilerin 127.0.0.1 üzerindeki belirli bir porta bağlanmasını dinleyecek ve istemcilerin birbirleriyle konuşmasına izin verecek bir program yazın. Bu program ilk argüman olarak bağlanılacak portu alacaktır.
