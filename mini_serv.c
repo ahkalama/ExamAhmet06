@@ -54,7 +54,7 @@ int main(int ac, char **av)
     if (serverfd == -1)
         ft_error("Fatal error\n");
 
-    struct sockaddr_in servaddr = {0};
+    struct sockaddr_in servaddr;
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
     servaddr.sin_port = htons(atoi(av[1]));
